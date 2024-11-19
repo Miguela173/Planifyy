@@ -1,187 +1,186 @@
-<!DOCTYPE html>
-<html lang="en">
+        <!DOCTYPE html>
+        <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLANIFY - Proyectos</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="proyecto.css">
-    <link rel="shortcut icon" href="Logos/roco.png" type="image/x-icon">
-    <link rel="stylesheet" href="proyectoss.js">
-</head>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>PLANIFY - Proyectos</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <link rel="stylesheet" href="proyecto.css">
+            <link rel="shortcut icon" href="Logos/roco.png" type="image/x-icon">
+        </head>
 
-<body>
-    <div class="min-h-full">
-        <!-- Navbar (usando la parte que has proporcionado) -->
-        <nav class="color">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="flex h-16 items-center justify-between">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <img class="h-20 w-25" src="Logos/roco.png" alt="PLANIFY">
-                        </div>
-                        <div class="flex-shrink-0">
-                            <img class="h-40 w-25" src="Logos/PLANify.png" alt="PLANIFY">
-                        </div>
-                        <div class="hidden md:block">
-                            <div class="ml-10 flex items-baseline space-x-4">
-                                <a href="index.html"
-                                    class="rounded-md hover:bg-green-600 px-3 py-2 text-sm text-black font-medium hover:text-white">Inicio</a>
-                                <a href="proyectoss.html"
-                                    class="rounded-md bg-green-600 px-3 py-2 text-sm font-medium  text-white">Proyectos</a>
-                                <a href="calendario.html"
-                                    class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-green-600 hover:text-white">Calendario</a>
-                                <a href="login.html"
-                                    class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-green-600 hover:text-white">Cerrar
-                                    Sesión</a>
+        <body>
+            <div class="min-h-full">
+                <!-- Navbar (usando la parte que has proporcionado) -->
+                <nav class="color">
+                    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div class="flex h-16 items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <img class="h-20 w-25" src="Logos/roco.png" alt="PLANIFY">
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <img class="h-40 w-25" src="Logos/PLANify.png" alt="PLANIFY">
+                                </div>
+                                <div class="hidden md:block">
+                                    <div class="ml-10 flex items-baseline space-x-4">
+                                        <a href="index.html"
+                                            class="rounded-md hover:bg-green-600 px-3 py-2 text-sm text-black font-medium hover:text-white">Inicio</a>
+                                        <a href="proyectoss.html"
+                                            class="rounded-md bg-green-600 px-3 py-2 text-sm font-medium  text-white">Proyectos</a>
+                                        <a href="calendario.html"
+                                            class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-green-600 hover:text-white">Calendario</a>
+                                        <a href="login.html"
+                                            class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-green-600 hover:text-white">Cerrar
+                                            Sesión</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </nav>
+
+                <!-- Header -->
+                <header class="bg-white shadow">
+                    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                        <h1 class="text-3xl font-bold tracking-tight text-gray-900 text-center">¡Gestiona tus Proyectos!</h1>
+                    </div>
+                </header>
+
+                <!-- Main content -->
+                <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                    <section id="proyectos" class="content-section">
+                        <h2 class="text-xl font-semibold mb-4 tex">Agregar Nuevo Proyecto</h2>
+
+                        <!-- Formulario para agregar proyecto -->
+                        <form id="form-proyecto" class="space-y-4">
+                            <div class="flex space-x-4">
+                                <div class="w-1/2">
+                                    <label for="nombre-proyecto" class="block text-sm font-medium text-gray-700">Nombre del
+                                        Proyecto</label>
+                                    <input type="text" id="nombre-proyecto"
+                                        class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md"
+                                        required>
+                                </div>
+                                <div class="w-1/2">
+                                    <label for="importancia" class="block text-sm font-medium text-gray-700">Importancia</label>
+                                    <select id="importancia"
+                                        class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md"
+                                        required>
+                                        <option value="Alta">Alta</option>
+                                        <option value="Media">Media</option>
+                                        <option value="Baja">Baja</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex space-x-4">
+                                <div class="w-1/2">
+                                    <label for="fecha-inicio" class="block text-sm font-medium text-gray-700">Fecha de
+                                        Inicio</label>
+                                    <input type="date" id="fecha-inicio"
+                                        class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md"
+                                        required>
+                                </div>
+                                <div class="w-1/2">
+                                    <label for="fecha-limite" class="block text-sm font-medium text-gray-700">Fecha
+                                        Límite</label>
+                                    <input type="date" id="fecha-limite"
+                                        class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md"
+                                        required>
+                                </div>
+                            </div>
+
+                            <button type="submit"
+                                class="mt-4 w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">Agregar
+                                Proyecto</button>
+
+                        </form>
+                    </section>
+
+                    <section id="lista-proyectos" class="content-section mt-12">
+                        <h2 class="text-xl font-semibold mb-4">Proyectos Actuales</h2>
+                        <table id="tabla-proyectos" class="min-w-full table-auto border-collapse">
+                            <thead>
+                                <tr>
+                                    <th class="px-4 py-2 border">Nombre del Proyecto</th>
+                                    <th class="px-4 py-2 border">Fecha de Inicio</th>
+                                    <th class="px-4 py-2 border">Fecha Límite</th>
+                                    <th class="px-4 py-2 border">Importancia</th>
+                                    <th class="px-4 py-2 border">Acciones</th>
+                                    <th class="px-4 py-2 border">Tareas</th>
+                                    <th class="px-4 py-2 border">Asignar Tarea</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-body">
+                                <!-- Aquí se mostrarán los proyectos agregados -->
+                            </tbody>
+                        </table>
+                    </section>
+                </main>
+
+            </div>
+
+            <!-- Modal para confirmación de eliminación -->
+            <div id="modal-eliminar" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center hidden">
+                <div class="bg-white p-6 rounded-md w-96">
+                    <h3 class="text-xl font-semibold mb-4">¿Estás seguro de que deseas eliminar este proyecto?</h3>
+                    <div class="flex space-x-4">
+                        <button id="confirmar-eliminar"
+                            class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none">Confirmar</button>
+                        <button id="cancelar-eliminar"
+                            class="w-full bg-gray-300 text-black py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none">Cancelar</button>
+                    </div>
                 </div>
             </div>
-        </nav>
 
-        <!-- Header -->
-        <header class="bg-white shadow">
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900 text-center">¡Gestiona tus Proyectos!</h1>
+            <!-- Modal para confirmación de eliminación de tarea -->
+            <div id="modal-eliminar-tarea"
+                class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center hidden">
+                <div class="bg-white p-6 rounded-md w-96">
+                    <h3 class="text-xl font-semibold mb-4">¿Estás seguro de que deseas eliminar esta tarea?</h3>
+                    <div class="flex space-x-4">
+                        <button id="confirmar-eliminar-tarea"
+                            class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none">Confirmar</button>
+                        <button id="cancelar-eliminar-tarea"
+                            class="w-full bg-gray-300 text-black py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none">Cancelar</button>
+                    </div>
+                </div>
             </div>
-        </header>
 
-        <!-- Main content -->
-        <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <section id="proyectos" class="content-section">
-                <h2 class="text-xl font-semibold mb-4 tex">Agregar Nuevo Proyecto</h2>
-
-                <!-- Formulario para agregar proyecto -->
-                <form id="form-proyecto" class="space-y-4">
-                    <div class="flex space-x-4">
-                        <div class="w-1/2">
-                            <label for="nombre-proyecto" class="block text-sm font-medium text-gray-700">Nombre del
-                                Proyecto</label>
-                            <input type="text" id="nombre-proyecto"
-                                class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md"
-                                required>
-                        </div>
-                        <div class="w-1/2">
-                            <label for="importancia" class="block text-sm font-medium text-gray-700">Importancia</label>
-                            <select id="importancia"
-                                class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md"
-                                required>
-                                <option value="Alta">Alta</option>
-                                <option value="Media">Media</option>
-                                <option value="Baja">Baja</option>
-                            </select>
-                        </div>
+        <!-- Modal para asignar tarea -->
+        <div id="modal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white p-6 rounded-lg w-96">
+                <h2 class="text-xl font-semibold mb-4">Asignar Tarea</h2>
+                <form id="form-tarea">
+                    <label for="nombre-tarea" class="block text-lg">Nombre de la tarea:</label>
+                    <input id="nombre-tarea" type="text" class="w-full h-12 px-4 py-2 border rounded-lg mt-2" required>
+                
+                    <label for="asignado" class="block text-lg mt-4">Asignado a:</label>
+                    <input id="asignado" type="text" class="w-full h-12 px-4 py-2 border rounded-lg mt-2" required>
+                
+                    <label for="fecha-limite-tarea" class="block text-lg mt-4">Fecha límite:</label>
+                    <input id="fecha-limite-tarea" type="date" class="w-full h-12 px-4 py-2 border rounded-lg mt-2" required>
+                
+                    <label for="estado-tarea" class="block text-lg mt-4">Estado:</label>
+                    <select id="estado-tarea" class="w-full h-12 px-4 py-2 border rounded-lg mt-2" required>
+                        <option value="pendiente">Pendiente</option>
+                        <option value="completada">Completada</option>
+                    </select>
+                
+                    <div class="mt-4 flex justify-between">
+                        <button type="button" onclick="cerrarModal()" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-red-600">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-green-600">
+                            Asignar tarea
+                        </button>
                     </div>
-                    <div class="flex space-x-4">
-                        <div class="w-1/2">
-                            <label for="fecha-inicio" class="block text-sm font-medium text-gray-700">Fecha de
-                                Inicio</label>
-                            <input type="date" id="fecha-inicio"
-                                class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md"
-                                required>
-                        </div>
-                        <div class="w-1/2">
-                            <label for="fecha-limite" class="block text-sm font-medium text-gray-700">Fecha
-                                Límite</label>
-                            <input type="date" id="fecha-limite"
-                                class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md"
-                                required>
-                        </div>
-                    </div>
-
-                    <button type="submit"
-                        class="mt-4 w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">Agregar
-                        Proyecto</button>
-
-                </form>
-            </section>
-
-            <section id="lista-proyectos" class="content-section mt-12">
-                <h2 class="text-xl font-semibold mb-4">Proyectos Actuales</h2>
-                <table id="tabla-proyectos" class="min-w-full table-auto border-collapse">
-                    <thead>
-                        <tr>
-                            <th class="px-4 py-2 border">Nombre del Proyecto</th>
-                            <th class="px-4 py-2 border">Fecha de Inicio</th>
-                            <th class="px-4 py-2 border">Fecha Límite</th>
-                            <th class="px-4 py-2 border">Importancia</th>
-                            <th class="px-4 py-2 border">Acciones</th>
-                            <th class="px-4 py-2 border">Tareas</th>
-                            <th class="px-4 py-2 border">Asignar Tarea</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabla-body">
-                        <!-- Aquí se mostrarán los proyectos agregados -->
-                    </tbody>
-                </table>
-            </section>
-        </main>
-
-    </div>
-
-    <!-- Modal para confirmación de eliminación -->
-    <div id="modal-eliminar" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center hidden">
-        <div class="bg-white p-6 rounded-md w-96">
-            <h3 class="text-xl font-semibold mb-4">¿Estás seguro de que deseas eliminar este proyecto?</h3>
-            <div class="flex space-x-4">
-                <button id="confirmar-eliminar"
-                    class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none">Confirmar</button>
-                <button id="cancelar-eliminar"
-                    class="w-full bg-gray-300 text-black py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none">Cancelar</button>
+                </form>              
             </div>
         </div>
-    </div>
 
-    <!-- Modal para confirmación de eliminación de tarea -->
-    <div id="modal-eliminar-tarea"
-        class="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center hidden">
-        <div class="bg-white p-6 rounded-md w-96">
-            <h3 class="text-xl font-semibold mb-4">¿Estás seguro de que deseas eliminar esta tarea?</h3>
-            <div class="flex space-x-4">
-                <button id="confirmar-eliminar-tarea"
-                    class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none">Confirmar</button>
-                <button id="cancelar-eliminar-tarea"
-                    class="w-full bg-gray-300 text-black py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none">Cancelar</button>
-            </div>
-        </div>
-    </div>
+            <script src="proyectoss.js"></script>
+        </body>
 
-   <!-- Modal para asignar tarea -->
-<div id="modal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-    <div class="bg-white p-6 rounded-lg w-96">
-        <h2 class="text-xl font-semibold mb-4">Asignar Tarea</h2>
-        <form id="form-tarea">
-            <div class="mb-4">
-                <label for="nombre-tarea" class="block">Nombre de la tarea</label>
-                <input type="text" id="nombre-tarea" class="input-field" placeholder="Nombre de la tarea" required>
-            </div>
-            <div class="mb-4">
-                <label for="asignado" class="block">Asignado a</label>
-                <input type="text" id="asignado" class="input-field" placeholder="Asignado a" required>
-            </div>
-            <div class="mb-4">
-                <label for="fecha-limite-tarea" class="block">Fecha límite</label>
-                <input type="date" id="fecha-limite-tarea" class="input-field" required>
-            </div>
-            <div class="mb-4">
-                <label for="estado-tarea" class="block">Estado</label>
-                <select id="estado-tarea" class="input-field" required>
-                    <option value="pendiente">Pendiente</option>
-                    <option value="completada">Completada</option>
-                </select>
-            </div>
-            <div class="flex justify-between">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Asignar</button>
-                <button type="button" id="cancelar-tarea" class="bg-gray-500 text-white px-4 py-2 rounded">Cancelar</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-    <script src="proyectoss.js"></script>
-</body>
-
-</html>
+        </html>

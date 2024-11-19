@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${proyecto.vencimiento || 'Fecha no definida'}</td>
                 <td>${proyecto.estado || 'Estado no definido'}</td>
                 <td>
-                    <button onclick="verProyecto(${index})">Ver</button>
-                    <button onclick="editarProyecto(${index})">Editar</button>
-                    <button onclick="eliminarProyecto(${index})">Eliminar</button>
+                    <button onclick="verProyecto(${index})" class="hover:text-white hover:bg-yellow-400">Ver</button>
+                    <button onclick="editarProyecto(${index})" class="hover:bg-blue-400 hover:text-white ">Editar</button>
+                    <button onclick="eliminarProyecto(${index})" class="hover:bg-red-600 hover:text-white">Eliminar</button>
                 </td>
             `;
         });

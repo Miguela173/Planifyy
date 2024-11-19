@@ -179,6 +179,7 @@ footer {
 
 /* De aquí hacia abajo son los estilos del calendario */
 
+/* ESTILOS DEL BOTÓN DE CALENDARIO */
 button {
     background-color: #22c55e; /* Verde sólido */
     color: white;
@@ -203,6 +204,5 @@ button a {
 }
 
 button:focus {
-    outline: 2px solid #22c55e;
-    outline-offset: 2px;
+    outline: none; /* Elimina la línea verde del foco */
 }
