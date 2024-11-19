@@ -32,31 +32,25 @@ function registerUser() {
     if (nombre && apellido && correo && password) {
         const user = { nombre, apellido, correo, password };
         localStorage.setItem(correo, JSON.stringify(user));
-        alert("Registro exitoso. Ahora puedes iniciar sesión.");
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Registro exitoso",
+            text: "Ahora puedes iniciar sesión.",
+            showConfirmButton: false,
+            timer: 1500
+        });
         login(); // Cambia a la vista de inicio de sesión
     } else {
-        alert("Por favor, completa todos los campos.");
+        Swal.fire({
+            icon: "warning",
+            title: "Faltan campos",
+            text: "Por favor, completa todos los campos.",
+            confirmButtonText: "Entendido"
+        });
     }
 }
 
-// Función para manejar el registro de nuevos usuarios
-function registerUser() {
-    const nombre = document.querySelector('#register .input-field[placeholder="Nombre"]').value;
-    const apellido = document.querySelector('#register .input-field[placeholder="Apellido"]').value;
-    const correo = document.querySelector('#register .input-field[placeholder="Correo"]').value;
-    const password = document.querySelector('#register .input-field[placeholder="Contraseña"]').value;
-
-    if (nombre && apellido && correo && password) {
-        const user = { nombre, apellido, correo, password };
-        localStorage.setItem(correo, JSON.stringify(user));
-        alert("Registro exitoso. Ahora puedes iniciar sesión.");
-        login(); // Cambia a la vista de inicio de sesión
-    } else {
-        alert("Por favor, completa todos los campos.");
-    }
-}
-
-// Función para validar el inicio de sesión
 function validateLogin() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -64,9 +58,27 @@ function validateLogin() {
     const userData = JSON.parse(localStorage.getItem(username));
 
     if (userData && userData.password === password) {
-        alert("Inicio de sesión exitoso");
-        window.location.href = "index.html";
+        Swal.fire({
+            position: "center", // Modal centrado
+            icon: "success",
+            title: "Inicio de sesión exitoso",
+            showConfirmButton: false,
+            timer: 1500
+        });
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1500);
     } else {
-        alert("Nombre de usuario o contraseña incorrectos");
-    }
+        Swal.fire({
+            icon: "error",
+            position: "center", // Modal centrado
+            title: "Error",
+            text: "Nombre de usuario o contraseña incorrectos.",
+            confirmButtonText: "Intentar de nuevo",
+            customClass: {
+                confirmButton: 'custom-confirm-button' // Aplica la clase personalizada
+            },
+            buttonsStyling: false // Desactiva el estilo de botones predeterminado
+        });
+    }
 }

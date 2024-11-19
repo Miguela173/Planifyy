@@ -24,93 +24,61 @@
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <a href="index.html" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Inicio</a>
+                <a href="index.html" class="rounded-md bg-green-600 px-3 py-2 text-sm font-medium text-white">Inicio</a>
                 <a href="proyectoss.html"
-                  class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-gray-700 hover:text-white">Proyectos</a>
-                <a href="#"
-                  class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-gray-700 hover:text-white">Tareas</a>
+                  class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-green-600 hover:text-white">Proyectos</a>
                 <a href="calendario.html"
-                  class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-gray-700 hover:text-white">Calendario</a>
+                  class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-green-600 hover:text-white">Calendario</a>
                 <a href="login.html"
-                  class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-gray-700 hover:text-white">Cerrar
+                  class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-green-600 hover:text-white">Cerrar
                   Sesión</a>
               </div>
             </div>
           </div>
-          <div class="hidden md:block">
-            <div class="ml-4 flex items-center md:ml-6">
-              <button type="button"
-                class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                <span class="absolute -inset-1.5"></span>
-                <span class="sr-only">View notifications</span>
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                  aria-hidden="true" data-slot="icon">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="-mr-2 flex md:hidden">
-            <button type="button"
-              class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              aria-controls="mobile-menu" aria-expanded="false">
-              <span class="absolute -inset-0.5"></span>
-              <span class="sr-only">Open main menu</span>
-              <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                aria-hidden="true" data-slot="icon">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-              <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                aria-hidden="true" data-slot="icon">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
+
     </nav>
 
     <main>
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <section id="dashboard" class="content-section">
-              <div class="summary">
-                  <div class="card">
-                      <h2>Proyectos Activos</h2>
-                      <p id="total-proyectos">0 proyectos en curso</p>
-                  </div>
-                  <div class="card">
-                      <h2>Tareas Pendientes</h2>
-                      <p id="total-tareas">5 tareas sin completar</p> <!-- Modificado: Añadido id para manipular desde JS -->
-                  </div>
-                  <div class="card">
-                      <h2>Próximas Fechas Límite</h2>
-                      <p id="total-fechas-proximas">3 tareas con fechas próximas</p> <!-- Modificado: Añadido id para manipular desde JS -->
-                  </div>
-              </div>
-          </section>
-  
-          <section id="proyectos" class="content-section">
-              <h2>Lista de Proyectos</h2>
-              <table id="proyectos-lista">
-                  <thead>
-                      <tr>
-                          <th>Nombre del Proyecto</th>
-                          <th>Fecha de Inicio</th>
-                          <th>Fecha de Vencimiento</th>
-                          <th>Estado</th>
-                          <th>Acciones</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <!-- Los proyectos se agregarán aquí dinámicamente -->
-                  </tbody>
-              </table>
-              <button class="add-btn" onclick="window.location.href='proyectoss.html'">Agregar Proyecto</button>
-          </section>
+        <section id="dashboard" class="content-section">
+          <div class="summary">
+            <div class="card">
+              <h2>Proyectos Activos</h2>
+              <p id="total-proyectos">0 proyectos en curso</p>
+            </div>
+            <div class="card">
+              <h2>Tareas Pendientes</h2>
+              <p id="total-tareas">5 tareas sin completar</p> <!-- Modificado: Añadido id para manipular desde JS -->
+            </div>
+            <div class="card">
+              <h2>Próximas Fechas Límite</h2>
+              <p id="total-fechas-proximas">3 tareas con fechas próximas</p>
+              <!-- Modificado: Añadido id para manipular desde JS -->
+            </div>
+          </div>
+        </section>
+
+        <section id="proyectos" class="content-section">
+          <h2>Lista de Proyectos</h2>
+          <table id="proyectos-lista">
+            <thead>
+              <tr>
+                <th>Nombre del Proyecto</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Vencimiento</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Los proyectos se agregarán aquí dinámicamente -->
+            </tbody>
+          </table>
+          <button class="add-btn" onclick="window.location.href='proyectoss.html'">Agregar Proyecto</button>
+        </section>
       </div>
-  </main>
-  
+    </main>
+
   </div>
   <footer>
     <p>&copy; 2024 Sistema de Gestión de Proyectos</p>
