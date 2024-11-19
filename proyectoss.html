@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -8,12 +8,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="proyecto.css">
     <link rel="shortcut icon" href="Logos/roco.png" type="image/x-icon">
-    <link rel="stylesheet" href="proyectoss.js">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="min-h-full">
-        <!-- Navbar (usando la parte que has proporcionado) -->
+        <!-- Navbar -->
         <nav class="color">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
@@ -52,7 +52,7 @@
         <!-- Main content -->
         <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <section id="proyectos" class="content-section">
-                <h2 class="text-xl font-semibold mb-4 tex">Agregar Nuevo Proyecto</h2>
+                <h2 class="text-xl font-semibold mb-4">Agregar Nuevo Proyecto</h2>
 
                 <!-- Formulario para agregar proyecto -->
                 <form id="form-proyecto" class="space-y-4">
@@ -95,7 +95,6 @@
                     <button type="submit"
                         class="mt-4 w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">Agregar
                         Proyecto</button>
-
                 </form>
             </section>
 
@@ -119,7 +118,6 @@
                 </table>
             </section>
         </main>
-
     </div>
 
     <!-- Modal para confirmación de eliminación -->
@@ -149,38 +147,39 @@
         </div>
     </div>
 
-   <!-- Modal para asignar tarea -->
-<div id="modal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-    <div class="bg-white p-6 rounded-lg w-96">
-        <h2 class="text-xl font-semibold mb-4">Asignar Tarea</h2>
-        <form id="form-tarea">
-            <div class="mb-4">
-                <label for="nombre-tarea" class="block">Nombre de la tarea</label>
-                <input type="text" id="nombre-tarea" class="input-field" placeholder="Nombre de la tarea" required>
-            </div>
-            <div class="mb-4">
-                <label for="asignado" class="block">Asignado a</label>
-                <input type="text" id="asignado" class="input-field" placeholder="Asignado a" required>
-            </div>
-            <div class="mb-4">
-                <label for="fecha-limite-tarea" class="block">Fecha límite</label>
-                <input type="date" id="fecha-limite-tarea" class="input-field" required>
-            </div>
-            <div class="mb-4">
-                <label for="estado-tarea" class="block">Estado</label>
-                <select id="estado-tarea" class="input-field" required>
-                    <option value="Pendiente">Pendiente</option>
-                    <option value="Completada">Completada</option>
-                </select>
-            </div>
-            <div class="flex justify-between">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Asignar</button>
-                <button type="button" id="cancelar-tarea" class="bg-gray-500 text-white px-4 py-2 rounded">Cancelar</button>
-            </div>
-        </form>
+    <div id="modal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white p-6 rounded-lg w-96">
+            <h2 class="text-xl font-semibold mb-4">Asignar Tarea</h2>
+            <form id="form-tarea">
+                <div class="mb-4">
+                    <label for="nombre-tarea" class="block">Nombre de la tarea</label>
+                    <input type="text" id="nombre-tarea" class="input-field mt-1 block w-full px-4 py-3 text-base border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md" placeholder="Nombre de la tarea" required>
+                </div>
+                <div class="mb-4">
+                    <label for="asignado" class="block">Asignado a</label>
+                    <input type="text" id="asignado" class="input-field mt-1 block w-full px-4 py-3 text-base border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md" placeholder="Asignado a" required>
+                </div>
+                <div class="mb-4">
+                    <label for="fecha-limite-tarea" class="block">Fecha límite</label>
+                    <input type="date" id="fecha-limite-tarea" class="input-field mt-1 block w-full px-4 py-3 text-base border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="estado-tarea" class="block">Estado</label>
+                    <select id="estado-tarea" class="input-field mt-1 block w-full px-4 py-3 text-base border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md" required>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Completada">Completada</option>
+                    </select>
+                </div>
+                <div class="flex justify-between">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-3 text-base rounded">Asignar</button>
+                    <button type="button" id="cancelar-tarea" class="bg-gray-500 text-white hover:bg-red-600 hover:text-white px-4 py-3 text-base rounded">Cancelar</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+    
 
+    <!-- Script del Proyecto -->
     <script src="proyectoss.js"></script>
 </body>
 

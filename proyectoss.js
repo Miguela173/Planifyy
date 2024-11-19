@@ -3,10 +3,8 @@ let proyectos = [];
 
 // Cargar los proyectos desde localStorage al cargar la página
 function cargarProyectos() {
-    // Si no hay proyectos guardados, inicializamos un array vacío
     const proyectosGuardados = JSON.parse(localStorage.getItem('proyectos')) || [];
     proyectos = proyectosGuardados;
-    // Actualizamos la tabla con los proyectos cargados
     actualizarTabla();
 }
 
@@ -23,7 +21,10 @@ function actualizarTabla() {
             <td class="px-4 py-2 border">${proyecto.fechaLimite}</td>
             <td class="px-4 py-2 border">${proyecto.importancia}</td>
             <td class="px-4 py-2 border">
-                <button onclick="mostrarModalEliminar(${index})" class="text-black hover:bg-red-600 hover:text-white">Eliminar</button>
+                <button onclick="mostrarModalEliminar(${index})" class="text-black hover:bg-red-600 hover:text-white flex items-center space-x-2">
+                    <i class="fas fa-trash"></i> <!-- Icono de basura -->
+                    <span>Eliminar</span>
+                </button>
             </td>
             <td class="px-4 py-2 border">
                 <ul>
@@ -83,7 +84,6 @@ document.getElementById('form-proyecto').addEventListener('submit', function (e)
 
 // Función para eliminar un proyecto
 function eliminarProyecto(index) {
-    // Eliminar el proyecto de la lista de proyectos
     proyectos.splice(index, 1);
 
     // Guardar los proyectos actualizados en localStorage
@@ -151,7 +151,8 @@ function marcarComoCompletada(proyectoIndex, tareaIndex) {
 
 // Función para abrir el modal de asignar tarea
 function abrirModalTarea(proyectoIndex) {
-    document.getElementById('modal').classList.remove('hidden');
+    const modal = document.getElementById('modal');
+    modal.classList.remove('hidden'); // Muestra el modal
     const formTarea = document.getElementById('form-tarea');
 
     // Limpiar los campos del formulario antes de mostrar el modal
@@ -161,31 +162,37 @@ function abrirModalTarea(proyectoIndex) {
     formTarea.onsubmit = function (e) {
         e.preventDefault();
 
+        // Obtener los valores del formulario
         const nombreTarea = document.getElementById('nombre-tarea').value;
         const asignado = document.getElementById('asignado').value;
         const fechaLimiteTarea = document.getElementById('fecha-limite-tarea').value;
         const estado = document.getElementById('estado-tarea').value;
 
-        const nuevaTarea = {
-            nombreTarea,
-            asignado,
-            fechaLimiteTarea,
-            estado
-        };
+        // Validar que los campos no estén vacíos
+        if (nombreTarea && asignado && fechaLimiteTarea && estado) {
+            const nuevaTarea = {
+                nombreTarea,
+                asignado,
+                fechaLimiteTarea,
+                estado
+            };
 
-        // Agregar la tarea al proyecto
-        proyectos[proyectoIndex].tareas.push(nuevaTarea);
+            // Agregar la tarea al proyecto
+            proyectos[proyectoIndex].tareas.push(nuevaTarea);
 
-        // Guardar los cambios en localStorage
-        localStorage.setItem('proyectos', JSON.stringify(proyectos));
+            // Guardar los cambios en localStorage
+            localStorage.setItem('proyectos', JSON.stringify(proyectos));
 
-        // Actualizar la tabla
-        actualizarTabla();
+            // Actualizar la tabla con los nuevos proyectos y tareas
+            actualizarTabla();
 
-        // Cerrar el modal
-        document.getElementById('modal').classList.add('hidden');
+            // Cerrar el modal
+            modal.classList.add('hidden');
+        } else {
+            alert('Por favor, completa todos los campos de la tarea.');
+        }
     };
 }
 
-// Cargar los proyectos cuando la página se carga
-window.onload = cargarProyectos;
+// Cargar los proyectos al cargar la página
+document.addEventListener('DOMContentLoaded', cargarProyectos);
