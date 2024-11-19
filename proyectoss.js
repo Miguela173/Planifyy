@@ -3,8 +3,10 @@ let proyectos = [];
 
 // Cargar los proyectos desde localStorage al cargar la página
 function cargarProyectos() {
+    // Si no hay proyectos guardados, inicializamos un array vacío
     const proyectosGuardados = JSON.parse(localStorage.getItem('proyectos')) || [];
     proyectos = proyectosGuardados;
+    // Actualizamos la tabla con los proyectos cargados
     actualizarTabla();
 }
 
@@ -24,10 +26,6 @@ function actualizarTabla() {
                 <button onclick="mostrarModalEliminar(${index})" class="text-black hover:bg-red-600 hover:text-white">Eliminar</button>
             </td>
             <td class="px-4 py-2 border">
-                <button onclick="redirigirProyecto(${index}, 'ver')" class="text-black hover:bg-blue-600 hover:text-white">Ver</button>
-                <button onclick="redirigirProyecto(${index}, 'editar')" class="text-black hover:bg-yellow-400 hover:text-white">Editar</button>
-            </td>
-            <td class="px-4 py-2 border">
                 <ul>
                     ${proyecto.tareas.map((tarea, tareaIndex) => `
                         <li class="mb-2 border-b pb-2">
@@ -43,8 +41,7 @@ function actualizarTabla() {
                                 </button>
                                 <button onclick="marcarComoCompletada(${index}, ${tareaIndex})" class="text-green-600 hover:text-white">✔ Completar</button>
                             </div>
-                        </li>
-                    `).join('')}
+                        </li>`).join('')}
                 </ul>
             </td>
             <td class="px-4 py-2 border">
@@ -86,8 +83,13 @@ document.getElementById('form-proyecto').addEventListener('submit', function (e)
 
 // Función para eliminar un proyecto
 function eliminarProyecto(index) {
+    // Eliminar el proyecto de la lista de proyectos
     proyectos.splice(index, 1);
+
+    // Guardar los proyectos actualizados en localStorage
     localStorage.setItem('proyectos', JSON.stringify(proyectos));
+
+    // Actualizar la tabla
     actualizarTabla();
 }
 
@@ -112,7 +114,11 @@ function mostrarModalEliminar(index) {
 // Función para eliminar una tarea
 function eliminarTarea(proyectoIndex, tareaIndex) {
     proyectos[proyectoIndex].tareas.splice(tareaIndex, 1);
+
+    // Guardar los cambios en localStorage
     localStorage.setItem('proyectos', JSON.stringify(proyectos));
+
+    // Actualizar la tabla
     actualizarTabla();
 }
 
@@ -137,7 +143,9 @@ function mostrarModalEliminarTarea(proyectoIndex, tareaIndex) {
 // Función para marcar una tarea como completada
 function marcarComoCompletada(proyectoIndex, tareaIndex) {
     proyectos[proyectoIndex].tareas[tareaIndex].estado = 'completada';
+    // Guardar los cambios en localStorage
     localStorage.setItem('proyectos', JSON.stringify(proyectos));
+    // Actualizar la tabla
     actualizarTabla();
 }
 
@@ -149,6 +157,7 @@ function abrirModalTarea(proyectoIndex) {
     // Limpiar los campos del formulario antes de mostrar el modal
     formTarea.reset();
 
+    // Asegurarnos de que el evento submit solo se registre una vez
     formTarea.onsubmit = function (e) {
         e.preventDefault();
 
@@ -164,29 +173,19 @@ function abrirModalTarea(proyectoIndex) {
             estado
         };
 
-        // Agregar la nueva tarea al proyecto correspondiente
+        // Agregar la tarea al proyecto
         proyectos[proyectoIndex].tareas.push(nuevaTarea);
 
-        // Guardar los proyectos actualizados en localStorage
+        // Guardar los cambios en localStorage
         localStorage.setItem('proyectos', JSON.stringify(proyectos));
+
+        // Actualizar la tabla
+        actualizarTabla();
 
         // Cerrar el modal
         document.getElementById('modal').classList.add('hidden');
-
-        // Actualizar la tabla de proyectos
-        actualizarTabla();
     };
 }
 
-// Función para cerrar el modal
-function cerrarModal() {
-    document.getElementById('modal').classList.add('hidden');
-}
-
-// Función para redirigir a la vista de un proyecto específico (ver o editar)
-function redirigirProyecto(index, accion) {
-    window.location.href = `proyectoss.html?accion=${accion}&index=${index}`;
-}
-
-// Llamar a cargar los proyectos al cargar la página
+// Cargar los proyectos cuando la página se carga
 window.onload = cargarProyectos;
