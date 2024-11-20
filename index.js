@@ -15,13 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const fila = tablaProyectos.insertRow();
             fila.innerHTML = `
                 <td>${proyecto.nombre || 'Nombre no definido'}</td>
-                <td>${proyecto.inicio || 'Fecha no definida'}</td>
-                <td>${proyecto.vencimiento || 'Fecha no definida'}</td>
-                <td>${proyecto.estado || 'Estado no definido'}</td>
+                <td>${proyecto.fechaInicio || 'Fecha no definida'}</td>
+                <td>${proyecto.fechaLimite || 'Fecha no definida'}</td>
+                <td>${proyecto.importancia || 'Importancia no definida'}</td> <!-- Aquí se muestra la importancia -->
                 <td>
                     <button onclick="verProyecto(${index})" class="hover:text-white">Ver</button>
                     <button onclick="editarProyecto(${index})" class="hover:bg-blue-400 hover:text-white ">Editar</button>
-                    <button onclick="eliminarProyecto(${index})" class="hover:bg-red-600 hover:text-white">Eliminar</button>
                 </td>
             `;
         });
@@ -34,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
     actualizarEstadisticas(proyectos);
 });
 
-
 // Función para actualizar las estadísticas de tareas
 function actualizarEstadisticas(proyectos) {
     const totalTareasPendientes = proyectos.reduce((count, proyecto) => {
@@ -43,7 +41,6 @@ function actualizarEstadisticas(proyectos) {
 
     const tareasProximas = proyectos.reduce((count, proyecto) => {
         return count + proyecto.tareas.filter(tarea => {
-            // Asegúrate de que las fechas estén en un formato válido
             const fechaLimite = new Date(tarea.fechaLimiteTarea);
             return fechaLimite < new Date() && tarea.estado !== 'completada';
         }).length;
@@ -56,11 +53,11 @@ function actualizarEstadisticas(proyectos) {
 
 // Funciones de acción de proyectos (ver, editar, eliminar)
 function verProyecto(index) {
-    alert('Ver Proyecto: ' + index);
+    window.location.href = `proyectoss.html?id=${index}`;
 }
 
 function editarProyecto(index) {
-    alert('Editar Proyecto: ' + index);
+    window.location.href = `proyectoss.html?id=${index}`;
 }
 
 function eliminarProyecto(index) {
@@ -79,20 +76,20 @@ function eliminarProyecto(index) {
 }
 
 // Función para agregar un proyecto
-function agregarProyecto(nombre, inicio, vencimiento, estado) {
+function agregarProyecto(nombre, fechaInicio, fechaLimite, importancia) {
     const proyectos = JSON.parse(localStorage.getItem('proyectos')) || [];
 
     // Asegurarse de que los valores estén bien definidos
-    if (!nombre || !inicio || !vencimiento || !estado) {
+    if (!nombre || !fechaInicio || !fechaLimite || !importancia) {
         alert('Por favor, complete todos los campos del proyecto');
         return;
     }
 
     const nuevoProyecto = {
         nombre: nombre,
-        inicio: inicio,
-        vencimiento: vencimiento,
-        estado: estado,
+        fechaInicio: fechaInicio,
+        fechaLimite: fechaLimite,
+        importancia: importancia,
         tareas: []  // Asegúrate de tener un arreglo de tareas vacío, si corresponde
     };
 

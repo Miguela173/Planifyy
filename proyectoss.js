@@ -15,30 +15,28 @@ function actualizarTabla() {
 
     proyectos.forEach((proyecto, index) => {
         const fila = document.createElement('tr');
-        fila.innerHTML = `
-            <td class="px-4 py-2 border">${proyecto.nombre}</td>
-            <td class="px-4 py-2 border">${proyecto.fechaInicio}</td>
-            <td class="px-4 py-2 border">${proyecto.fechaLimite}</td>
+        fila.innerHTML = 
+            `<td class="px-4 py-2 border">${proyecto.nombre}</td>
+            <td class="px-4 py-2 border">${proyecto.fechaInicio || 'Fecha no definida'}</td> <!-- Validar fechaInicio -->
+            <td class="px-4 py-2 border">${proyecto.fechaLimite || 'Fecha no definida'}</td> <!-- Validar fechaLimite -->
             <td class="px-4 py-2 border">${proyecto.importancia}</td>
             <td class="px-4 py-2 border">
                 <button onclick="mostrarModalEliminar(${index})" class="text-black hover:bg-red-600 hover:text-white flex items-center space-x-2">
-                    <i class="fas fa-trash"></i> <!-- Icono de basura -->
-                    <span>Eliminar</span>
+                    <i class="fas fa-trash"></i> 
+                    <span>Eliminar Proyecto</span>
                 </button>
             </td>
             <td class="px-4 py-2 border">
                 <ul>
-                    ${proyecto.tareas.map((tarea, tareaIndex) => `
-                        <li class="mb-2 border-b pb-2">
+                    ${proyecto.tareas.map((tarea, tareaIndex) => 
+                        `<li class="mb-2 border-b pb-2">
                             ${tarea.nombreTarea} - Estado: ${tarea.estado}
                             <br>Asignado a: ${tarea.asignado}
                             <br>Fecha Límite: ${tarea.fechaLimiteTarea}
                             <div class="mt-2 flex space-x-2">
                                 <button onclick="mostrarModalEliminarTarea(${index}, ${tareaIndex})" class="text-red-600 hover:bg-red-500 hover:text-white transition-all flex items-center space-x-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 0 24 24">
-                                        <path d="M 10 2 L 9 3 L 5 3 C 4.4 3 4 3.4 4 4 C 4 4.6 4.4 5 5 5 L 7 5 L 17 5 L 19 5 C 19.6 5 20 4.6 20 4 C 20 3.4 19.6 3 19 3 L 15 3 L 14 2 L 10 2 z M 5 7 L 5 20 C 5 21.1 5.9 22 7 22 L 17 22 C 18.1 22 19 21.1 19 20 L 19 7 L 5 7 z M 9 9 C 9.6 9 10 9.4 10 10 L 10 19 C 10 19.6 9.6 20 9 20 C 8.4 20 8 19.6 8 19 L 8 10 C 8 9.4 8.4 9 9 9 z M 15 9 C 15.6 9 16 9.4 16 10 L 16 19 C 16 19.6 15.6 20 15 20 C 14.4 20 14 19.6 14 19 L 14 10 C 14 9.4 14.4 9 15 9 z"></path>
-                                    </svg>
-                                    <span>Eliminar</span>
+                                    <i class="fas fa-trash"></i>
+                                    <span>Eliminar Tarea</span>
                                 </button>
                                 <button onclick="marcarComoCompletada(${index}, ${tareaIndex})" class="text-green-600 hover:text-white">✔ Completar</button>
                             </div>
@@ -47,8 +45,7 @@ function actualizarTabla() {
             </td>
             <td class="px-4 py-2 border">
                 <button onclick="abrirModalTarea(${index})" class="text-black hover:text-white hover:bg-blue-600">Asignar Tarea</button>
-            </td>
-        `;
+            </td>`;
         tablaBody.appendChild(fila);
     });
 }
@@ -57,33 +54,48 @@ function actualizarTabla() {
 document.getElementById('form-proyecto').addEventListener('submit', function (e) {
     e.preventDefault();
 
+    if (proyectos.length >= 3) {
+        const modalLimite = document.getElementById('modal-limite');
+        modalLimite.classList.remove('hidden');
+        
+        document.getElementById('cerrar-modal-limite').onclick = function () {
+            modalLimite.classList.add('hidden');
+        };
+
+        return;
+    }
+
     const nombre = document.getElementById('nombre-proyecto').value;
     const importancia = document.getElementById('importancia').value;
     const fechaInicio = document.getElementById('fecha-inicio').value;
     const fechaLimite = document.getElementById('fecha-limite').value;
 
+    // Validación de fechas
+    if (!fechaInicio || !fechaLimite) {
+        alert('Por favor, ingresa ambas fechas.');
+        return;
+    }
+
     const nuevoProyecto = {
         nombre,
         importancia,
-        fechaInicio,
-        fechaLimite,
+        fechaInicio,  // Asegurarnos de que se guarde la fecha correctamente
+        fechaLimite,  // Asegurarnos de que se guarde la fecha correctamente
         tareas: []
     };
 
-    // Recuperar proyectos desde localStorage
     let proyectosGuardados = JSON.parse(localStorage.getItem('proyectos')) || [];
     proyectosGuardados.push(nuevoProyecto);
 
-    // Guardar los proyectos actualizados en localStorage
     localStorage.setItem('proyectos', JSON.stringify(proyectosGuardados));
 
-    // Actualizar la variable global y la tabla
     proyectos = proyectosGuardados;
     actualizarTabla();
 });
 
 // Función para eliminar un proyecto
 function eliminarProyecto(index) {
+    // Eliminar el proyecto de la lista de proyectos
     proyectos.splice(index, 1);
 
     // Guardar los proyectos actualizados en localStorage
@@ -189,10 +201,16 @@ function abrirModalTarea(proyectoIndex) {
             // Cerrar el modal
             modal.classList.add('hidden');
         } else {
-            alert('Por favor, completa todos los campos de la tarea.');
+            alert('Por favor, complete todos los campos de la tarea.');
         }
+    };
+
+    // Función para cerrar el modal sin guardar cambios
+    const cancelarTarea = document.getElementById('cancelar-tarea');
+    cancelarTarea.onclick = function () {
+        modal.classList.add('hidden'); // Ocultar el modal
     };
 }
 
-// Cargar los proyectos al cargar la página
-document.addEventListener('DOMContentLoaded', cargarProyectos);
+// Cargar proyectos al inicio
+cargarProyectos();
