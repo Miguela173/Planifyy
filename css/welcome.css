@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.4), rgba(72, 152, 70, 0.7));
+}
+
+img.logo {
+    position: absolute;
+    top: 1rem;
+    left: 20%; /* Movido hacia la izquierda */
+    transform: none; /* Quitado el centrado */
+    width: 400px; /* Tamaño reducido */
+}
+
+img.roco {
+    position: absolute;
+    bottom: -100px;
+    left: -150px; /* Movido más hacia la izquierda */
+    width: 500px; /* Tamaño reducido */
+    transform: rotate(15deg);
+}
+
+.text-container {
+    display: flex;
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; /* Centra el texto verticalmente */
+    position: absolute;
+    top: 60%; /* Ajusta la posición vertical */
+    left: 35%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Centra con precisión */
+    width: 80%; /* Amplía el área para el texto */
+    text-align: center; /* Alinea el texto al centro */
+}
+
+.text-container p {
+    font-size: 26px; /* Tamaño más visible */
+    font-weight: 500;
+    color: #000;
+    margin: 0;
+    line-height: 2; /* Mayor espaciado entre líneas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+
+.premium-card {
+    position: absolute;
+    top: 55%;
+    right: 10%;
+    transform: translateY(-50%);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(to right, #fffb03, #80c70d);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 85%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.premium-card img {
+    width: 90%;
+    max-width: 250px;
+    margin: 0 auto 1.5rem;
+}
+
+.premium-card .price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #000;
+}
+
+.premium-card ul {
+    margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.premium-card ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #000;
+}
+
+.premium-card a {
+    margin-top: 1.5rem;
+    display: block;
+    background-color: #000;
+    color: #fff;
+    padding: 0.75rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.premium-card a:hover {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+}

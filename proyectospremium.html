@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLANIFY - Proyectos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/proyecto.css">
+    <link rel="shortcut icon" href="Logos/roco.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="min-h-full">
+        <!-- Navbar -->
+        <nav class="color">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="flex h-16 items-center justify-between">
+                    <div class="flex items-center">
+                    </div>
+                    <div class="flex-shrink-0">
+                        <a href="index.html">
+                            <img class="h-40 w-25" src="Logos/PLANify with rocco black.png" alt="PLANIFY">
+                        </a>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="index.html" class="rounded-md px-3 py-2 text-sm text-black font-medium hover:bg-green-600 hover:text-white">Inicio</a>
+                            <a href="proyectoss.html" class="rounded-md px-3 py-2 text-sm font-medium bg-green-600 text-white">Proyectos</a>
+                            <a href="calendario.html" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-green-600 hover:text-white">Calendario</a>
+                            <a href="planes.html" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-green-600 hover:text-white">Planes</a>
+                            <a href="login.html" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:bg-red-600 hover:text-white">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="bg-white shadow">
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900 text-center">¡Gestiona tus Proyectos!</h1>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <section id="proyectos" class="content-section">
+                <h2 class="text-xl font-semibold mb-4">Agregar Nuevo Proyecto</h2>
+
+                <!-- Formulario para agregar proyecto -->
+                <form id="form-proyecto" class="space-y-4">
+                    <div class="flex space-x-4">
+                        <div class="w-1/2">
+                            <label for="nombre-proyecto" class="block text-sm font-medium text-gray-700">Nombre del Proyecto</label>
+                            <input type="text" id="nombre-proyecto" class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md" required>
+                        </div>
+                        <div class="w-1/2">
+                            <label for="importancia" class="block text-sm font-medium text-gray-700">Importancia</label>
+                            <select id="importancia" class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md" required>
+                                <option value="Alta">Alta</option>
+                                <option value="Media">Media</option>
+                                <option value="Baja">Baja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <div class="w-1/2">
+                            <label for="fecha-inicio" class="block text-sm font-medium text-gray-700">Fecha de Inicio</label>
+                            <input type="date" id="fecha-inicio" class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md" required>
+                        </div>
+                        <div class="w-1/2">
+                            <label for="fecha-limite" class="block text-sm font-medium text-gray-700">Fecha Límite</label>
+                            <input type="date" id="fecha-limite" class="mt-1 block w-full px-4 py-2 border-2 border-black focus:outline-none focus:ring-2 focus:ring-black rounded-md" required>
+                        </div>
+                    </div>
+
+                    <button id="btn-agregar" type="button" class="mt-4 w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">Agregar Proyecto</button>
+
+
+                </form>
+            </section>
+
+            <section id="lista-proyectos" class="content-section mt-12">
+                <h2 class="text-xl font-semibold mb-4">Proyectos Actuales</h2>
+                <table id="tabla-proyectos" class="min-w-full table-auto border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2 border">Nombre del Proyecto</th>
+                            <th class="px-4 py-2 border">Fecha de Inicio</th>
+                            <th class="px-4 py-2 border">Fecha Límite</th>
+                            <th class="px-4 py-2 border">Importancia</th>
+                            <th class="px-4 py-2 border">Acciones</th>
+                            <th class="px-4 py-2 border">Tareas</th>
+                            <th class="px-4 py-2 border">Asignar Tarea</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-body">
+                        <!-- Aquí se mostrarán los proyectos agregados -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="/premium/premium.js"></script>
+</body>
+
+</html>

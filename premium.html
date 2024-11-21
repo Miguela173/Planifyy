@@ -19,7 +19,7 @@
           </div>
           <div class="flex-shrink-0">
             <a href="index.html">
-              <img class="h-40 w-25" src="/Logos/PLANify with rocco.png" alt="PLANIFY">
+              <img class="h-40 w-25" src="/Logos/PLANify with rocco black.png" alt="PLANIFY">
             </a>
           </div>   
             <div class="hidden md:block">
@@ -90,7 +90,68 @@
   </footer>
 
 
-  <script src="js/index.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tablaBody = document.getElementById('tabla-body');
+    
+            // Cargar proyectos desde localStorage
+            const proyectos = JSON.parse(localStorage.getItem('proyectos')) || [];
+            mostrarProyectos();
+    
+            // Mostrar proyectos en la tabla
+            function mostrarProyectos() {
+                tablaBody.innerHTML = ''; // Limpiar tabla
+    
+                proyectos.forEach((proyecto, index) => {
+                    const fila = tablaBody.insertRow();
+                    fila.innerHTML = `
+                        <td>${proyecto.nombre}</td>
+                        <td>${proyecto.fechaInicio}</td>
+                        <td>${proyecto.fechaLimite}</td>
+                        <td>${proyecto.importancia}</td>
+                        <td>
+                            <button onclick="verProyecto(${index})">Ver</button>
+                            <button onclick="editarProyecto(${index})">Editar</button>
+                            <button onclick="eliminarProyecto(${index})">Eliminar</button>
+                            <button onclick="asignarTarea(${index})">Asignar Tarea</button>
+                        </td>
+                    `;
+                });
+            }
+    
+            // Función para eliminar proyecto
+            function eliminarProyecto(index) {
+                proyectos.splice(index, 1);
+                localStorage.setItem('proyectos', JSON.stringify(proyectos));
+                mostrarProyectos();
+            }
+    
+            // Función para ver un proyecto
+            function verProyecto(index) {
+                const proyecto = proyectos[index];
+                alert(`Proyecto: ${proyecto.nombre}`);
+            }
+    
+            // Función para editar un proyecto
+            function editarProyecto(index) {
+                const proyecto = proyectos[index];
+                document.getElementById('nombre-proyecto').value = proyecto.nombre;
+                document.getElementById('fecha-inicio').value = proyecto.fechaInicio;
+                document.getElementById('fecha-limite').value = proyecto.fechaLimite;
+                document.getElementById('importancia').value = proyecto.importancia;
+    
+                eliminarProyecto(index);
+            }
+    
+            // Función para asignar tarea a un proyecto
+            function asignarTarea(index) {
+                const proyecto = proyectos[index];
+                alert('Asignar tarea al proyecto: ' + proyecto.nombre);
+            }
+        });
+    </script>
+    
 </body>
 
 </html>
