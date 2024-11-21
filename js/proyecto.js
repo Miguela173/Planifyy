@@ -37,3 +37,16 @@ function editarDescripcion() {
     document.getElementById('projectDescription').innerText = descripcionProyecto;
     cerrarModal('editarModal');
 }
+
+
+/* cambios de calendario */
+function actualizarCalendario() {
+   
+    const event = new Event('actualizarCalendario');
+    window.dispatchEvent(event);
+}
+
+
+proyectos = proyectosGuardados;
+actualizarTabla();
+actualizarCalendario(); 

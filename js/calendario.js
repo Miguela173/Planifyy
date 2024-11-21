@@ -125,5 +125,41 @@ dateForm.addEventListener('submit', function (e) {
   modal.classList.add('hidden');
 });
 
+/* cambios de calendario */
+
+function marcarFechasDeProyectos() {
+  const proyectos = JSON.parse(localStorage.getItem('proyectos')) || [];
+  
+  proyectos.forEach(proyecto => {
+      const fecha = proyecto.fechaLimite;
+      const texto = `Límite de entrega de:${proyecto.nombre}`;
+      const color = 'bg-red-500';
+
+      if (fecha) {
+          const [year, month, day] = fecha.split('-');
+          const dayCell = document.querySelector(`#calendar-${year}-${parseInt(month)}-${parseInt(day)}`);
+          if (dayCell) {
+              
+              dayCell.classList.add(color);
+
+              
+              dayCell.innerHTML = `
+                  <span class="block text-white font-bold">${parseInt(day)}</span>
+                  <span class="block font-bold text-white text-xs">${texto}</span>
+              `;
+          }
+      }
+  });
+}
+
+
+window.addEventListener('actualizarCalendario', function () {
+  marcarFechasDeProyectos();
+});
+
+
+marcarFechasDeProyectos();
+
+
 
 
