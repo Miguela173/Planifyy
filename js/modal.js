@@ -1,37 +1,42 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("payment-modal");
-    const openButtons = [document.getElementById("adquirir-estandar"), document.getElementById("adquirir-premium")];
-    const cancelButton = document.getElementById("cancel-modal");
 
-    // Mostrar el modal
-    openButtons.forEach(button => {
-        button.addEventListener("click", () => {
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.querySelector("form");
+        const modal = document.getElementById("payment-modal");
+        const cancelButton = document.getElementById("cancel-modal");
+
+        // Abrir el modal al hacer clic en un botón de adquisición
+        document.getElementById("adquirir-estandar").addEventListener("click", () => {
             modal.classList.remove("hidden");
         });
-    });
+        
+        document.getElementById("adquirir-premium").addEventListener("click", () => {
+            modal.classList.remove("hidden");
+        });
 
-    // Ocultar el modal
-    cancelButton.addEventListener("click", () => {
-        modal.classList.add("hidden");
-    });
+        // Cerrar el modal si el usuario cancela
+        cancelButton.addEventListener("click", () => {
+            modal.classList.add("hidden");
+        });
 
-    // Manejar el formulario de pago
-    const form = modal.querySelector("form");
-    form.addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevenir el envío del formulario
+        // Manejar el envío del formulario
+        form.addEventListener("submit", (event) => {
+            event.preventDefault(); // Evitar que el formulario se envíe normalmente
 
-        // Mostrar alerta con SweetAlert
-        Swal.fire({
-            icon: "success",
-            title: "¡Pago exitoso!",
-            text: "Tarjeta validada, pago exitoso.",
-            confirmButtonText: "Aceptar",
-            customClass: {
-                confirmButton: "bg-green-500 text-white px-4 py-2 rounded"
-            }
-        }).then(() => {
-            modal.classList.add("hidden"); // Cerrar el modal después de la alerta
-            form.reset(); // Limpiar el formulario
+            // Simular el pago exitoso
+            Swal.fire({
+                icon: 'success',
+                title: '¡Pago exitoso!',
+                text: 'Tu pago ha sido procesado correctamente.',
+                confirmButtonText: 'Ir a Bienvenida'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirigir a welcome.html
+                    window.location.href = 'welcome.html';
+                }
+            });
+
+            // Ocultar el modal
+            modal.classList.add("hidden");
         });
     });
-});
+
