@@ -6,7 +6,7 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background: url("inicio.jpg");
+    background: url("/img/inicio.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
