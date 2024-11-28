@@ -154,7 +154,7 @@ function mostrarModalEliminarTarea(proyectoIndex, tareaIndex) {
 
 // Función para marcar una tarea como completada
 function marcarComoCompletada(proyectoIndex, tareaIndex) {
-    proyectos[proyectoIndex].tareas[tareaIndex].estado = 'completada';
+    proyectos[proyectoIndex].tareas[tareaIndex].estado = 'Completada';
     // Guardar los cambios en localStorage
     localStorage.setItem('proyectos', JSON.stringify(proyectos));
     // Actualizar la tabla

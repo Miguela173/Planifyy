@@ -31,7 +31,7 @@ img.roco {
     align-items: center; /* Centra el texto verticalmente */
     position: absolute;
     top: 60%; /* Ajusta la posición vertical */
-    left: 35%; /* Centra horizontalmente */
+    left:  38%; /* Centra horizontalmente */
     transform: translate(-50%, -50%); /* Centra con precisión */
     width: 80%; /* Amplía el área para el texto */
     text-align: center; /* Alinea el texto al centro */
